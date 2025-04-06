@@ -14,3 +14,6 @@ from django.core.asgi import get_asgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'UniqueBeautySalon.settings')
 
 application = get_asgi_application()
+LOGIN_REDIRECT_URL = 'home'  # after login
+LOGOUT_REDIRECT_URL = 'login'  # after logout
+LOGIN_URL = 'login'
