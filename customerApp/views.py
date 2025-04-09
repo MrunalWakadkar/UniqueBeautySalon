@@ -54,3 +54,6 @@ def services_list(request):
 #@user_passes_test(lambda u: not u.is_superuser)
 #def customer_dashboard(request):
  #   return render(request, 'customer_dashboard.html')
+
+def contact(request):
+    return render(request,'contact.html' ,{})

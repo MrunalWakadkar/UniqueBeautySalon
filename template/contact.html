@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | Beauty Salon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      background: #fff0f5;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ad1457;
+      margin-bottom: 40px;
+      font-size: 40px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .contact-section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      color: #d63384;
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 25px;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .contact-info a {
+      color: #d63384;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-form .form-control {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+    }
+
+    .btn-primary {
+      background-color: #d63384;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #c82374;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .col-md-4,
+    .col-md-6 {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    #map iframe {
+      width: 50%;
+      margin-left: 400px;
+      height: 450px;
+      border: 5px solid #c82374;
+      border-radius: 10px;
+      margin-top: 50px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+      }
+
+      #map iframe {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="contact-section">
+    <h1>Contact Us</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 contact-info">
+          <h2 class="section-title">Contact Information</h2>
+          <p>📍 <strong>Address:</strong><br>
+            Casa Imperia Rd, near Sri Adhyayan Preschool Daycare,<br>
+            Wakadkar Wasti, Wakad, Pune, Maharashtra 411057</p>
+
+          <p>📞 <strong>Phone:</strong> 
+            <a href="tel:+919923188788">+91 9923188788</a></p>
+
+          <p>📧 <strong>Email:</strong> 
+            <a href="mailto:kalyaniwakadkar84@gmail.com">kalyaniwakadkar84@gmail.com</a></p>
+
+          <p>📸 <strong>Instagram:</strong> 
+            <a href="https://www.instagram.com/your_instagram_username" target="_blank">@your_instagram_username</a></p>
+        </div>
+
+        <div class="col-md-6">
+          <form action="#" class="contact-form">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Subject">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" rows="6" placeholder="Message"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Send Message" class="btn-primary">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="map">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7563.032269122334!2d73.74654958507423!3d18.595840830049028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b97eabd34855%3A0xab04036712aa1e3c!2sUnique%20Beauty%20Parlour!5e0!3m2!1sen!2sin!4v1744186342891!5m2!1sen!2sin" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+</body>
+</html>
