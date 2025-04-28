@@ -1,1 +1,1 @@
-web: gunicorn UniqueBeautySalon.wsgi:application
+web: gunicorn UniqueBeautySalon.wsgi
