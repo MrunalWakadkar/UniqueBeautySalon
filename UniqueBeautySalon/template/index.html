@@ -1,0 +1,553 @@
+{% extends "base.html" %}
+{% load static %}
+{% block mainblock %}
+<style>
+	.custom-arrow {
+    color: #333;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    transition: 0.3s ease;
+  }
+
+  .custom-arrow:hover {
+    background: rgba(255, 255, 255, 1);
+    color: #000;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: auto;
+  }
+	.work-img {
+	  height: 500px;
+	  width: 100%;
+	  object-fit: cover;
+	}
+	.work-entry {
+	  display: block;
+	  position: relative;
+	  overflow: hidden;
+	  border-radius: 10px;
+	  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	  margin-bottom: 30px;
+	}
+	.work-entry .info {
+	  position: absolute;
+	  bottom: 0;
+	  left: 0;
+	  width: 100%;
+	  padding: 20px;
+	  background: rgba(0, 0, 0, 0.5);
+	  color: #fff;
+	  opacity: 0;
+	  transition: all 0.3s ease-in-out;
+	}
+	.work-entry:hover .info {
+	  opacity: 1;
+	}
+	.work-entry .icon {
+	  color: #fff;
+	}
+	.staff {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .staff .img {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  .staff h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .staff .position {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+    display: block;
+  }
+  .staff .text {
+    font-size: 14px;
+    color: #555;
+    padding: 0 15px;
+  }
+ /* --- General Section Padding --- */
+#packageCarousel {
+  padding: 50px 0;
+}
+
+/* --- Pricing Card Styling --- */
+.pricing-entry {
+  background: #ffffff;
+  border-radius: 20px;
+  padding:  50px 35px;
+  margin: 15px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+  min-height: 480px;
+}
+
+.pricing-entry:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Package Title --- */
+.pricing-entry h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* --- Price Styling --- */
+.pricing-entry .price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #111;
+}
+
+.pricing-entry .per {
+  font-size: 0.85rem;
+  color: #777;
+  display: block;
+  margin-top: 5px;
+}
+
+/* --- Services List --- */
+.pricing-entry ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pricing-entry ul li {
+  padding: 10px 0;
+  color: #444;
+  font-size: 1rem;
+  border-bottom: 1px dashed #e1e1e1;
+}
+
+/* --- Book Now Button --- */
+.pricing-entry .btn {
+  border: 2px solid #343a40;
+  border-radius: 50px;
+  color: #343a40;
+  background-color: transparent;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.pricing-entry .btn:hover {
+  background-color: #343a40;
+  color: #fff;
+}
+
+/* --- Carousel Arrows --- */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 0px;
+  top: 45%;
+  background: transparent;
+}
+
+.custom-arrow i {
+  color: #d63384;
+  transition: color 0.3s ease;
+}
+
+.custom-arrow i:hover {
+  color: #b32b6f;
+}
+
+.block-6.services .media-body p {
+font-family: 'Playfair Display', sans-serif;
+  font-size: 1.2rem;       /* Increased font size */
+  line-height: 1.9;        /* Better line spacing */
+  color: #444;             /* Softer, elegant text color */
+  font-weight: 500;
+  margin-top: 15px;
+  padding: 0 10px;
+  text-align: center;     /* Makes it clean and polished */
+  letter-spacing: 0.3px;
+}
+.block-6.services .media-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2a2a2a;
+  margin-bottom: 10px;
+}
+.block-6.services {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.block-6.services:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+p {
+font-family: 'Playfair Display', sans-serif;
+  font-size: 1.2rem;       /* Increased font size */
+  line-height: 1.9;        /* Better line spacing */
+  color: #444;             /* Softer, elegant text color */
+  font-weight: 500;
+  margin-top: 15px;
+  padding: 0 10px;
+  text-align: center;     /* Makes it clean and polished */
+  letter-spacing: 0.3px;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin-bottom: 10px;
+}
+/* Reduce top and bottom padding of each section */
+.ftco-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Reduce spacing from section headers */
+.mb-5 {
+  margin-bottom: 3rem !important; /* reduce from default 3rem */
+}
+
+.pb-3 {
+  padding-bottom: 2rem !important; /* reduce from default 1.5rem */
+}
+  </style>
+  
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row">
+          <div class="col-md-4 ftco-animate">
+            <div class="media d-block text-center block-6 services">
+              <div class="icon d-flex mb-3"><span class="flaticon-facial-treatment"></span></div>
+              <div class="media-body">
+                <h3 class="heading">Skin &amp; Beauty Care</h3>
+                <p >Pamper your skin with our relaxing and effective beauty treatments. From cleansing facials to glowing skin therapy, we help you look radiant and feel confident every day.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-4 ftco-animate">
+            <div class="media d-block text-center block-6 services">
+              <div class="icon d-flex mb-3"><span class="flaticon-cosmetics"></span></div>
+              <div class="media-body">
+                <h3 class="heading">Makeup Pro</h3>
+                <p class ="desc">Get the perfect look for any occasion with our professional makeup services. Whether it’s for a wedding, party, or photoshoot, we create flawless, long-lasting looks that match your style.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-4 ftco-animate">
+            <div class="media d-block text-center block-6 services">
+              <div class="icon d-flex mb-3"><span class="flaticon-curl"></span></div>
+              <div class="media-body">
+                <h3 class="heading">Hair Style</h3>
+                <p>Transform your look with trendy cuts, gorgeous blowouts, and elegant updos. Our stylists are here to give your hair the care and style it deserves — fresh, fashionable, and fabulous!</p>
+              </div>
+            </div>    
+          </div>
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section bg-light">
+		<div class="container">
+		  <div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-8 heading-section ftco-animate text-center">
+			  <h2 class="mb-4">Our Beauty Experts</h2>
+			  <p>Meet the faces behind the magic. Our expert team is dedicated to enhancing your natural beauty with personalized care, premium products, and a warm, welcoming touch.</p>
+			</div>
+		  </div>
+		  <div class="row justify-content-center">
+			<div class="col-md-4 d-flex ftco-animate justify-content-center">
+			  <div class="staff">
+				<div class="img" style="background-image: url('{% static 'images/person_1.jpg' %}');"></div>
+				<h3>Kalyani</h3>
+				<span class="position">Stylist</span>
+				<div class="text">
+				  <p>With years of experience and a passion for beauty, Kalyani brings a gentle touch and professional care to every service.</p>
+				</div>
+			  </div>
+			</div>
+			<div class="col-md-4 d-flex ftco-animate justify-content-center">
+			  <div class="staff">
+				<div class="img" style="background-image: url('{% static 'images/person_2.jpg' %}');"></div>
+				<h3>Sheetal</h3>
+				<span class="position">Beautician</span>
+				<div class="text">
+				  <p>Dedicated to making you feel your best, Sheetal offers personalized skincare and precise grooming to leave you glowing.</p>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+	  
+
+    <section class="ftco-section">
+		<div class="container">
+		  <div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+			  <h2 class="mb-4">Our Work</h2>
+			  <p>Discover the beauty transformations crafted by our experts — each look designed to bring out your best self.</p>
+			</div>
+		  </div>
+		  <div class="row">
+			<div class="col-md-4 ftco-animate">
+			  <a href="#" class="work-entry">
+				<img src="{% static 'images/work1.jpg' %}" class="img-fluid work-img" alt="Lips Makeover">
+				<div class="info d-flex align-items-center">
+				  <div>
+					<div class="icon mb-4 d-flex align-items-center justify-content-center">
+					  <span class="icon-search"></span>
+					</div>
+					<h3>Makeup</h3>
+				  </div>
+				</div>
+			  </a>
+			</div>
+			<div class="col-md-4 ftco-animate">
+			  <a href="#" class="work-entry">
+				<img src="{% static 'images/work2.jpg' %}" class="img-fluid work-img" alt="Hair Style">
+				<div class="info d-flex align-items-center">
+				  <div>
+					<div class="icon mb-4 d-flex align-items-center justify-content-center">
+					  <span class="icon-search"></span>
+					</div>
+					<h3>Makeup</h3>
+				  </div>
+				</div>
+			  </a>
+			</div>
+			<div class="col-md-4 ftco-animate">
+			  <a href="#" class="work-entry">
+				<img src="{% static 'images/work3.jpg' %}" class="img-fluid work-img" alt="Makeup">
+				<div class="info d-flex align-items-center">
+				  <div>
+					<div class="icon mb-4 d-flex align-items-center justify-content-center">
+					  <span class="icon-search"></span>
+					</div>
+					<h3>Makeup</h3>
+				  </div>
+				</div>
+			  </a>
+			</div>
+		  </div>
+		</div>
+	  </section>
+
+    <section class="ftco-partner bg-light">
+    	<div class="container">
+    		<div class="row partner justify-content-center">
+    			<div class="col-md-10">
+    				<div class="row">
+		        	<div class="col-md-3 ftco-animate">
+		        		<a href="#" class="partner-entry">
+		        			<img src="{% static 'images/partner-1.jpg' %}" class="img-fluid" alt="Colorlib template">
+		        		</a>
+		        	</div>
+		        	<div class="col-md-3 ftco-animate">
+		        		<a href="#" class="partner-entry">
+		        			<img src="{% static 'images/n+logo.png' %}" class="img-fluid" alt="Colorlib template">
+		        		</a>
+		        	</div>
+					<div class="col-md-3 ftco-animate">
+		        		<a href="#" class="partner-entry">
+		        			<img src="{% static 'images/misti.png' %}" class="img-fluid" alt="Colorlib template">
+		        		</a>
+		        	</div>
+					<div class="col-md-3 ftco-animate">
+		        		<a href="#" class="partner-entry">
+		        			<img src="{% static 'images/ayuredge.png' %}" class="img-fluid" alt="Colorlib template">
+		        		</a>
+		        	</div>
+	        	</div>
+	        </div>
+        </div>
+    	</div>
+    </section>
+	<section class="ftco-section">
+		<div class="container">
+		  <div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+			  <h2 class="mb-4">Beauty Pricing</h2>
+			  <p>Discover our thoughtfully curated beauty packages, tailored to meet your unique needs and pampering preferences. Whether you're seeking a quick refresh or a luxurious makeover, our pricing plans offer the perfect blend of care, quality, and value.</p>
+			</div>
+		  </div>
+		  <div id="packageCarousel" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+		  
+			  {% for group in grouped_packages %}
+			  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+				<div class="row justify-content-center">
+		  
+				  {% for p in group %}
+				  <div class="col-md-5 d-flex align-items-stretch">
+					<div class="pricing-entry text-center w-100 d-flex flex-column justify-content-between">
+					  <div>
+						<h3 class="mb-4">{{ p.name }}</h3>
+						<p>
+						  <span class="price">₹{{ p.price }} / one trip</span>
+						  
+						</p>
+						<ul class="list-unstyled">
+						  <li>{{ p.item1 }}</li>
+						  <li>{{ p.item2 }}</li>
+						  <li>{{ p.item3 }}</li>
+						  <li>{{ p.item4 }}</li>
+						  <li>{{ p.item5 }}</li>
+						</ul>
+					  </div>
+					  <div class="mt-3">
+						<a href="{% url 'book' p.id %}" class="btn btn-primary btn-outline-primary px-4 py-3 w-75">
+						  Book now
+						</a>
+					  </div>
+					</div>
+				  </div>
+				  {% endfor %}
+		  
+				</div>
+			  </div>
+			  {% endfor %}
+		  
+			</div>
+		  
+			<!-- Carousel Arrows -->
+			<a class="carousel-control-prev" href="#packageCarousel" role="button" data-bs-slide="prev">
+			  <span class="custom-arrow"><i class="fas fa-chevron-left fa-2x"></i></span>
+			</a>
+			<a class="carousel-control-next" href="#packageCarousel" role="button" data-bs-slide="next">
+			  <span class="custom-arrow"><i class="fas fa-chevron-right fa-2x"></i></span>
+			</a>
+		  </div>
+		  
+		  
+</section>	  
+		<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_4.jpg);">
+			<div class="overlay"></div>
+      <div class="container">
+        <div class="row justify-content-center">
+        	<div class="col-md-10">
+        		<div class="row">
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-flower"></span></div>
+		              	<span>Makeup Over Done</span>
+		                <strong class="number" data-number="100">0</strong>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-flower"></span></div>
+		              	<span>Procedure</span>
+		                <strong class="number" data-number="500">0</strong>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-flower"></span></div>
+		              	<span>Happy Client</span>
+		                <strong class="number" data-number="1000">0</strong>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-flower"></span></div>
+		              	<span>Skin Treatment</span>
+		                <strong class="number" data-number="900">0</strong>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+            <h2 class="mb-4">Recent from blog</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20" style="background-image: url('{% static 'images/partner-4.jpg' %}');">
+              </a>
+              <div class="text py-4 d-block">
+              	<div class="meta">
+                  <div><a href="#">Sept 10, 2018</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="heading mt-2"><a href="#">Skin Care for Teen Skin</a></h3>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20" style="background-image: url('{% static 'images/image_2.jpg' %}');">
+              </a>
+              <div class="text py-4 d-block">
+              	<div class="meta">
+                  <div><a href="#">Sept 10, 2018</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="heading mt-2"><a href="#">Skin Care for Teen Skin</a></h3>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry align-self-stretch">
+              <a href="blog-single.html" class="block-20" style="background-image: url('{% static 'images/image_3.jpg' %}');">
+              </a>
+              <div class="text py-4 d-block">
+              	<div class="meta">
+                  <div><a href="#">Sept 10, 2018</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                </div>
+                <h3 class="heading mt-2"><a href="#">Skin Care for Teen Skin</a></h3>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  {% endblock mainblock %}  

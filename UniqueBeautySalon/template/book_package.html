@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Your Package</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .booking-box {
+      background: #fff;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      color: #d63384;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    form input, form button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    form button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background-color: #b42b6e;
+    }
+
+    .card {
+      background: #f9f9f9;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .card h3 {
+      color: #d63384;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .card ul li {
+      margin-bottom: 5px;
+      list-style-type: disc;
+    }
+  </style>
+</head>
+<body>
+  <div class="booking-box">
+    {% if package %}
+      <h1>Book: {{ package.name }}</h1>
+      <div class="card">
+        <h3>₹{{ package.price }}</h3>
+        <ul>
+          <li>{{ package.item1 }}</li>
+          <li>{{ package.item2 }}</li>
+          <li>{{ package.item3 }}</li>
+          <li>{{ package.item4 }}</li>
+          <li>{{ package.item5 }}</li>
+        </ul>
+      </div>
+
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" name="customer_name" placeholder="Your Name" required />
+        <input type="date" name="date" required />
+        <input type="time" name="time" required />
+        <button type="submit">Confirm Booking</button>
+      </form>
+    {% else %}
+      <p class="text-danger">No package was selected.</p>
+    {% endif %}
+  </div>
+</body>
+</html>

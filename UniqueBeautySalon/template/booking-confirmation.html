@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Confirmed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .confirmation-box {
+      background: #fff;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      max-width: 600px;
+    }
+
+    .confirmation-box h1 {
+      color: #d63384;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .confirmation-box p {
+      color: #555;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .confirmation-box a {
+      background-color: #d63384;
+      color: white;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .confirmation-box a:hover {
+      background-color: #b42b6e;
+    }
+
+    .card {
+      background: #f9f9f9;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .card ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="confirmation-box">
+    {% if booking %}
+      <h1>Booking Confirmed!</h1>
+      <div class="card">
+        <h3>{{ booking.package.name }}</h3>
+        <p><strong>Price:</strong> ₹{{ booking.package.price }}</p>
+        <p><strong>Customer:</strong> {{ booking.customer_name }}</p>
+        <p><strong>Date:</strong> {{ booking.date }}</p>
+        <p><strong>Time:</strong> {{ booking.time }}</p>
+        <ul>
+          <li>{{ booking.package.item1 }}</li>
+          <li>{{ booking.package.item2 }}</li>
+          <li>{{ booking.package.item3 }}</li>
+          <li>{{ booking.package.item4 }}</li>
+          <li>{{ booking.package.item5 }}</li>
+        </ul>
+        <p class="text-muted">Thank you for booking with Unique Beauty Salon!</p>
+      </div>
+      <a href="/">Go to Home</a>
+    {% else %}
+      <p>No booking found.</p>
+    {% endif %}
+  </div>
+</body>
+</html>
